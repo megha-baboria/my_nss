@@ -7,6 +7,8 @@ class Post(models.Model):
     created_at = models.DateTimeField(default=now)
     def __str__(self):
         return f'{self.body}'
+    class Meta:
+        ordering = ['-created_at']
 
 class Like(models.Model):
     post = models.ForeignKey(Post ,related_name = 'likes' ,on_delete=models.CASCADE)
