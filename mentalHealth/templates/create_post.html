@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 
@@ -11,11 +12,74 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #2d2254;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .back {
+            background: green;
+
+            color: #f5c42f;
+        }
+
+        .back1 {
+            background: rgba(255, 255, 255, 0.1);
+
+            color: #fff;
+        }
+
+        .quote {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .form-control1 {
+
+            background: transparent;
+            background:rgb(233, 233, 233);
+            border: none;
+            outline: none;
+            border-bottom: 1px solid red;
+            color: grey;
+            font-weight: bolder;
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .form-control1:hover {
+            color: black;
+        }
+
+        input {
+            height: 45px;
+        }
+
+        form .submit1 {
+            
+            background: #f5c42f;
+            border-color: transparent;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            height: 50px;
+            margin-top: 20px;
+
+        }
+
+        form .submit1:hover {
+            background-color: rgb(130, 184, 49);
+
+        }
+    </style>
 </head>
 
 <body>
     <div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-10">
+        <nav class="navbar navbar-expand-lg navbar-dark mb-10">
             <a class="navbar-brand" href="">Mental Health Portal</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,18 +101,61 @@
             </div>
         </nav>
     </div>
+
+
+
+
+    <!-- <div class="container mt-5">
+            
+        <div class="row justify-content-center">
+            
+          <div class="col-4">
+            <span id="demo" style="color:aliceblue; font-size:x-large" class="quote text-center"></span>
+          </div>
+          <div class="col-2">
+            <span  style="color:aliceblue; font-size:large" class="quote text-center"></span>
+          </div>
+          
+        </div>
+        
+        <div class="row justify-content-start">
+          
+        </div>
+        
+      </div> -->
+    <center><img src="{% static 'images/buddha.png' %}" style="width:700px" alt="My image" float-center><br><span style="color:white; font-size:30px">"No matter how hard the past, you can always begin again.” —Buddha</span></center>
+
     <div class='containor mt-5'>
         <div class='col-6 mx-auto'>
             <form method='POST' action='.'>{% csrf_token %}
                 <div class="form-group">
-                    <textarea class="form-control" name='body' rows="4" cols="50">
-                       Write what u want to say
+                    
+                    <!-- <input type="text" class="form-control form-control1"  name='body' required placeholder="Type what you want to say"> -->
+                    <textarea class="form-control form-control1" name='body' rows="2" cols="40" required>
+                        Type what you want to say
                     </textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Post</button>
+                <center><button type="submit" class="btn btn-primary form-control1 submit1">Post</button></center>
+                
             </form>
         </div>
     </div>
+
+
+    <script>
+        var i = 0;
+        var txt = "What mental health needs is more sunlight, more candor, and more unashamed conversation.   - Glenn Close";
+        var speed = 50;
+        typeWriter();
+        function typeWriter() {
+            if (i < txt.length) {
+                document.getElementById("demo").innerHTML += txt.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+    </script>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

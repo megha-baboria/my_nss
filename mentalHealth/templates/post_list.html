@@ -1,4 +1,4 @@
-
+{% load static %}
 <!doctype html>
 <html lang="en">
 
@@ -12,10 +12,46 @@
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <title>Confessions</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #2d2254;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .back {
+            background: rgba(255, 255, 255, 0.1);
+
+            color: #f5c42f;
+        }
+
+        .back2 {
+
+            /* The image used */
+            background-image: url( "{% static 'images/buddhaback1.webp' %}");
+
+            /* Half height */
+            height: 50%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+            
+            /* background: rgba(255, 255, 255, 0.2); */
+            color: white;
+        }
+
+        .back1 {
+            color: #fff;
+        }
+    </style>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<body >
+    <nav class="navbar navbar-expand-lg navbar-dark ">
         <a class="navbar-brand" href="">Mental Health Portal</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,28 +68,34 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/confession/">See all confessions</a>
                 </li>
-                
+
             </ul>
         </div>
     </nav>
-    <h1>Confessions</h1>
-    <div class="jumbotron">
-        <h1 class="display-4">Have something to say</h1>
-        <p class="lead">This button might help</p>
-        <a class="btn btn-outline-primary btn-lg" href="/confession/make/" role="button">Click</a>
-      </div>
-    {% for object in obj_list %}
-    <div class="card w-75">
-        <div class="card-body">
-            <p class="card-text text-right">{{object.created_at}}</p>
-            <h2 class="card-title">#{{ object.id}}</h2>
-            <h5 class="card-text">{{ object.body|safe|truncatewords:"20"|linebreaks}}</h5>
-            <a href="/confession/{{object.id}}/" class="btn btn-outline-primary">Read More</a>
 
+
+    <center>
+        <div class="jumbotron w-75 back2" >
+            <!-- <img src="{% static 'images/buddhaback.webp' %}" alt="My image"> -->
+            <img src="{% static 'images/logo128.png' %}" alt="My image">
+            <h1 class="display-4">Have something to say</h1>
+            <p class="lead">This button might help</p>
+            <a class="btn btn-danger btn-lg" href="/confession/make/" role="button">Click</a>
         </div>
-    </div>
-    {% endfor %}
-    
+        {% for object in obj_list %}
+        <div class="card w-75 mt-5 mb-5 back">
+            <div class="card-body ">
+                <p class="card-text text-right">{{object.created_at}}</p>
+                <h3 class="card-text text-left"><span class="ml-3">Confession</span>
+                    <span class="card-title text-left">#{{ object.id}}</span></h2>
+                    <h5 class="card-text back1 mt-3">{{ object.body|safe|truncatewords:"20"|linebreaks}}
+                </h3>
+                <a href="/confession/{{object.id}}/" class="btn btn-outline-warning">Read More</a>
+
+            </div>
+        </div>
+        {% endfor %}
+    </center>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
