@@ -50,8 +50,18 @@
                     class="card-title"></span>#</span>
                 <span class="card-title" id='myID'>{{ object.id }}</span></h1>
             <p class="card-text text-right" style="font-size:small;">{{object.created_at}}</p>
-
+            <!-- <center><img src={{url}} class="img-responsive" style="width: 500px; float: left; margin-right: 10px;" /></center> -->
             <h5 class="card-text" style="color: aliceblue;">{{object.body}}</h5>
+            {% if url %}
+                <img src={{url}} class="img-fluid mx-auto d-block mb-3" width="500" height="281" alt="Responsive image">
+            {% endif %}
+
+            {% if url1 %}
+            <video width="500" height="281" class="img-fluid mx-auto d-block mb-3" controls>
+                <source src={{url1}} type="video/mp4" />
+            {% endif %}    
+            </video>
+            
             <div class="my-3">
                 <button type="button" class="btn btn-outline-success" id='likebt' style="margin-right: 3px;">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hand-thumbs-up" fill="currentColor"
@@ -85,6 +95,7 @@
         <div class="card-body">
             <h6 class="card-title text-right comtext"style="font-size:small;">{{comment.created_at}}</h6>
             <h5 class="card-text comtext">{{comment.content}}</h5>
+            
         </div>
     </div>
     {% endfor %}

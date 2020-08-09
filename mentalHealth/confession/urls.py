@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views 
+from django.conf import settings
+from django.conf.urls.static import static
 app_name='confession'
 
 urlpatterns = [
@@ -9,6 +11,4 @@ urlpatterns = [
     path('<p_id>/like/', views.post_like, name='like'),
     path('<p_id>/dislike/', views.post_dislike, name='dislike'),
     path('<p_id>/comment/', views.post_comment, name='comment'),
-
-
-]
+]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

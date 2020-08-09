@@ -4,6 +4,8 @@ from django.utils.timezone import now
 
 class Post(models.Model):
     body = models.TextField()
+    my_image = models.ImageField(upload_to='images/',blank=True, null=True) 
+    my_video = models.FileField(upload_to='videos/',blank=True, null=True)
     created_at = models.DateTimeField(default=now)
     def __str__(self):
         return f'{self.body}'

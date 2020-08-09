@@ -8,24 +8,16 @@ from django.http import JsonResponse
 from django.utils import timezone
 import json
 
-# def post_create(request):
-# 	form = post_form(request.POST or None)	
-# 	if form.is_valid():
-# 		form.save()
-# 		form = post_form()
-# 	context = {"form" : form}
-# 	template_name = 'create_post.html'
-# 	return render (request,template_name,context)
-
 def post_create(request):
 	if request.method=='POST':
 		body = request.POST['body']
-		post = Post.objects.create(body = body)
+		my_image = request.FILES.get('image')
+		my_video = request.FILES.get('video')
+		post = Post.objects.create(body = body,my_image = my_image,my_video=my_video)
 		post.save()
 		return redirect('/confession/')
 	else:
 		return render(request, 'create_post.html')
-
 
 def post_list(request):
 	list = Post.objects.all()
@@ -36,7 +28,20 @@ def post_detail(request,p_id):
 	likes = post.likes.count()
 	dislikes = post.dislikes.count()
 	comments = post.comments.all()
-	return render (request,"post_detail.html",{"object":post,"likes":likes,"dislikes":dislikes,"comments":comments})
+	if(post.my_image):
+		pic = post.my_image.url
+		my_url = "/confession"+pic
+	else:
+		my_url = ""
+	if(post.my_video):
+		video = post.my_video.url
+		my_url1 = "/confession"+video
+	else:
+		my_url1 = ""
+	
+	
+	
+	return render (request,"post_detail.html",{"object":post,"likes":likes,"dislikes":dislikes,"comments":comments,"url":my_url,"url1":my_url1})
 
 def post_like(request,p_id):
 	post = Post.objects.filter(id = p_id).first()
