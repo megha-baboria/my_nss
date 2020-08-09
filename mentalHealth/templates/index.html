@@ -12,6 +12,20 @@
 </head>
 
 <body class="body1">
+	<!--menu-->
+  <div><div id="circularMenu" class="circular-menu">
+  <a class="floating-btn" onclick="document.getElementById('circularMenu').classList.toggle('active');">
+    <i class="fa fa-bars"></i>
+  </a>
+  <menu class="items-wrapper">
+  <a href="../flare/rules.pdf" class= "menu-item"><i class="fas fa-users"></i></a>
+  <a href="https://nss.iitb.ac.in/ContactUs/" class="menu-item"><i class="fas fa-file-medical"></i></a>
+  <a href="https://nss.iitb.ac.in/ContactUs/" class="menu-item"><i class="fas fa-stream"></i></a>
+  <a href="https://nss.iitb.ac.in/" class="menu-item"><i class="fas fa-house-user"></i></a>
+
+  </menu>
+</div></div>
+<!---->
 	<!-- partial:index.partial.html -->
 	<section class="section section-top">
 		<div class="content rellax" data-rellax-speed="5">
@@ -24,31 +38,34 @@
 	</section>
 
 	<section class="section section-stream">
-		
+
 		<img
 				class="play rellax"
 				src="{% static 'images/back5.png' %}"
 				alt=""
 				data-rellax-speed="-1" data-rellax-xs-speed="-5"
 			/>
-			
+
 		<div class="content rellax" data-rellax-speed="10">
 			<div>
-				<h2 class="secondary-text">Stream Everything</h2>
+				<h2 class="secondary-text">
+					<button type="button" class="btn btn-warning btn-lg">Stream Everything</button></h2>
 				<p>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore et
 					dicta consectetur incidunt omnis nam quis quidem nisi ipsa deserunt.
 				</p>
 			</div>
 			<div>
-				<h2 class="secondary-text">Short is the New Long</h2 class="secondary-text">
+				<h2 class="secondary-text">
+					<button type="button" class="btn btn-warning btn-lg">Short is the New Long</button></h2 class="secondary-text">
 				<p>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore et
 					dicta consectetur incidunt omnis nam quis quidem nisi ipsa deserunt.
 				</p>
 			</div>
 			<div>
-				<h2 class="secondary-text">Short is the New Long</h2 class="secondary-text">
+				<h2 class="secondary-text">
+					<button type="button" class="btn btn-warning btn-lg">Short is the New Long</button></h2 class="secondary-text">
 				<p>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore et
 					dicta consectetur incidunt omnis nam quis quidem nisi ipsa deserunt.
